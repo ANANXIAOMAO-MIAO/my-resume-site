@@ -36,7 +36,7 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "滕琳",
-  headline: "心理学 × 产品 × AI",
+  headline: "心理学 × 产品 × AI探索",
   subtitle: "From understanding people to building products, to amplifying expression with AI.",
   intro:
     "用产品思维拆解复杂问题，用心理学视角理解人的需求。",
