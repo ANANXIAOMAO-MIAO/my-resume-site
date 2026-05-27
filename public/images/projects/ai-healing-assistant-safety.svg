@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#eef4f8"/>
+  <text x="90" y="110" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Risk Boundary Map</text>
+  <circle cx="600" cy="395" r="210" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <circle cx="600" cy="395" r="120" fill="#eaf1f7"/>
+  <circle cx="600" cy="395" r="44" fill="#e94b5f"/>
+  <g fill="#fff" stroke="#dfe7ee" stroke-width="3">
+    <rect x="110" y="210" width="260" height="96" rx="24"/>
+    <rect x="830" y="210" width="260" height="96" rx="24"/>
+    <rect x="110" y="500" width="260" height="96" rx="24"/>
+    <rect x="830" y="500" width="260" height="96" rx="24"/>
+  </g>
+</svg>

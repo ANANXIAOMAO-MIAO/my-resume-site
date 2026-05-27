@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#eef4f8"/>
+  <text x="90" y="110" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Intervention Map</text>
+  <rect x="475" y="275" width="250" height="150" rx="32" fill="#e94b5f"/>
+  <g fill="#fff" stroke="#dfe7ee" stroke-width="3">
+    <rect x="90" y="180" width="240" height="120" rx="28"/>
+    <rect x="870" y="180" width="240" height="120" rx="28"/>
+    <rect x="90" y="500" width="240" height="120" rx="28"/>
+    <rect x="870" y="500" width="240" height="120" rx="28"/>
+  </g>
+  <g stroke="#dfe7ee" stroke-width="6">
+    <line x1="330" y1="240" x2="475" y2="320"/>
+    <line x1="870" y1="240" x2="725" y2="320"/>
+    <line x1="330" y1="560" x2="475" y2="380"/>
+    <line x1="870" y1="560" x2="725" y2="380"/>
+  </g>
+</svg>

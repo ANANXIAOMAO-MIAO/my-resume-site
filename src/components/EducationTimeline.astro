@@ -1,0 +1,27 @@
+---
+import type { Education } from "../content/profile";
+
+type Props = {
+  items: Education[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="timeline">
+  {
+    items.map((item) => (
+      <article class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true" />
+        <div>
+          <p class="meta">{item.period} · {item.location}</p>
+          <h3>{item.school}</h3>
+          <p class="strong">{item.degree}</p>
+          <ul>
+            {item.highlights.map((highlight) => <li>{highlight}</li>)}
+          </ul>
+        </div>
+      </article>
+    ))
+  }
+</div>

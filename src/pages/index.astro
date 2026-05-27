@@ -1,0 +1,76 @@
+---
+import ContactSection from "../components/ContactSection.astro";
+import EducationHorizontal from "../components/EducationHorizontal.astro";
+import ExperienceTimelineCarousel from "../components/ExperienceTimelineCarousel.astro";
+import Hero from "../components/Hero.astro";
+import ProjectStackShowcase from "../components/ProjectStackShowcase.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { timelineExperiences } from "../content/experiences";
+import { profile } from "../content/profile";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projectOrder = ["academic-briefing-tool", "belief-court-tool", "ai-healing-assistant"];
+const featuredProjects = [...profile.projects].sort(
+  (a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug),
+);
+---
+
+<BaseLayout title={`${profile.name} · Personal Portfolio`} description={profile.intro}>
+  <header class="site-header">
+    <a href="#top" class="brand">Back to Top</a>
+    <nav aria-label="Primary navigation">
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <Hero profile={profile} />
+
+    <section class="section-shell">
+      <SectionHeader eyebrow="Overview" title="把心理学理解转化为 AI 产品与内容能力" />
+      <div class="capability-grid">
+        {
+          profile.capabilities.map((capability) => (
+            <article class="capability-card">
+              <p class="card-label">{capability.title}</p>
+              <h3>{capability.label}</h3>
+              <p>{capability.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section-shell" id="education">
+      <SectionHeader
+        eyebrow="Education"
+        title="教育经历"
+        description="心理学与产品设计双重背景，支撑 AI 产品、用户体验与内容结构化实践。"
+      />
+      <EducationHorizontal items={profile.education} />
+    </section>
+
+    <section class="section-shell" id="experience">
+      <SectionHeader
+        eyebrow="Experience"
+        title="工作与实践经历"
+        description="按时间轴从新到旧展示经历，点击左侧节点在右侧查看完整细节。"
+      />
+      <ExperienceTimelineCarousel experiences={timelineExperiences} />
+    </section>
+
+    <section class="section-shell" id="projects">
+      <SectionHeader
+        eyebrow="Projects"
+        title="项目经历"
+        description="点击右侧项目切换预览，点击卡片进入详情页查看完整案例。"
+      />
+      <ProjectStackShowcase projects={featuredProjects} />
+    </section>
+
+    <ContactSection contacts={profile.contacts} />
+  </main>
+</BaseLayout>

@@ -1,0 +1,113 @@
+---
+import type { Profile } from "../content/profile";
+
+type Props = {
+  profile: Profile;
+};
+
+const { profile } = Astro.props;
+const emailContact = profile.contacts.find((contact) => contact.label === "Email");
+const phoneContact = profile.contacts.find((contact) => contact.label === "Phone");
+---
+
+<section class="hero section-shell" id="top" data-hero>
+  <div class="hero-copy" data-hero-copy>
+    <p class="eyebrow">Personal Portfolio</p>
+    <h1>{profile.headline}</h1>
+    <p class="hero-subtitle">{profile.subtitle}</p>
+    <p class="hero-intro">{profile.intro}</p>
+    <div class="tag-row">
+      {profile.keywords.map((keyword) => <span>{keyword}</span>)}
+    </div>
+  </div>
+  <aside class="hero-card" data-hero-card aria-label="Profile summary">
+    <div class="avatar-frame">
+      {
+        profile.avatar ? (
+          <img src={profile.avatar} alt={`${profile.name} 的头像`} />
+        ) : (
+          <span>{profile.name.slice(0, 1)}</span>
+        )
+      }
+    </div>
+    <div class="hero-card-copy">
+      <p class="card-label">Personal Details</p>
+      <h2>{profile.name}</h2>
+      <ul class="hero-details">
+        <li>
+          <span class="hero-detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"></path>
+              <circle cx="12" cy="10" r="2.5"></circle>
+            </svg>
+          </span>
+          <span>{profile.location}</span>
+        </li>
+        {
+          emailContact && (
+            <li>
+              <span class="hero-detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="m3 7 9 6 9-6"></path>
+                </svg>
+              </span>
+              {emailContact.href ? (
+                <a href={emailContact.href}>{emailContact.value}</a>
+              ) : (
+                <span>{emailContact.value}</span>
+              )}
+            </li>
+          )
+        }
+        {
+          phoneContact && (
+            <li>
+              <span class="hero-detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6.5 4h2l1.5 5-1.2 1a12 12 0 0 0 5.2 5.2l1-1.2 5 1.5v2a2 2 0 0 1-2 2C10.4 20.5 3.5 13.6 3.5 6.5a2 2 0 0 1 2-2.5Z"></path>
+                </svg>
+              </span>
+              {phoneContact.href ? (
+                <a href={phoneContact.href}>{phoneContact.value}</a>
+              ) : (
+                <span>{phoneContact.value}</span>
+              )}
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>("[data-hero]");
+  const card = hero?.querySelector<HTMLElement>("[data-hero-card]");
+  const copy = hero?.querySelector<HTMLElement>("[data-hero-copy]");
+  const desktopQuery = window.matchMedia("(min-width: 901px)");
+
+  if (hero && card && copy) {
+    const syncHeroHeight = () => {
+      if (!desktopQuery.matches) {
+        copy.style.height = "";
+        return;
+      }
+
+      copy.style.height = `${card.offsetHeight}px`;
+    };
+
+    syncHeroHeight();
+
+    const observer = new ResizeObserver(syncHeroHeight);
+    observer.observe(card);
+
+    desktopQuery.addEventListener("change", syncHeroHeight);
+    window.addEventListener("resize", syncHeroHeight);
+
+    const avatar = card.querySelector("img");
+    if (avatar && !avatar.complete) {
+      avatar.addEventListener("load", syncHeroHeight, { once: true });
+    }
+  }
+</script>

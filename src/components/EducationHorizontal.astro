@@ -1,0 +1,38 @@
+---
+import type { Education } from "../content/profile";
+
+type Props = {
+  items: Education[];
+};
+
+const { items } = Astro.props;
+const [primary, secondary] = items;
+---
+
+<div class="education-card">
+  {
+    primary && (
+      <article class="education-column">
+        <p class="meta">{primary.period} · {primary.location}</p>
+        <h3>{primary.school}</h3>
+        <p class="strong">{primary.degree}</p>
+        <ul>
+          {primary.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+      </article>
+    )
+  }
+  <div class="education-divider" aria-hidden="true" />
+  {
+    secondary && (
+      <article class="education-column">
+        <p class="meta">{secondary.period} · {secondary.location}</p>
+        <h3>{secondary.school}</h3>
+        <p class="strong">{secondary.degree}</p>
+        <ul>
+          {secondary.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+      </article>
+    )
+  }
+</div>

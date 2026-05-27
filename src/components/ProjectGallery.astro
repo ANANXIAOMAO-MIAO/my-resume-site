@@ -1,0 +1,20 @@
+---
+type Props = {
+  images: string[];
+  title: string;
+};
+
+const { images, title } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <div class="gallery-grid">
+      {images.map((image, index) => (
+        <figure>
+          <img src={image} alt={`${title} 截图 ${index + 1}`} loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  )
+}

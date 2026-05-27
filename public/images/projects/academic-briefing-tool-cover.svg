@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#eef4f8"/>
+  <rect x="76" y="76" width="1048" height="608" rx="44" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <text x="140" y="155" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Academic Briefing Tool</text>
+  <rect x="140" y="230" width="720" height="74" rx="37" fill="#f6f7f9"/>
+  <circle cx="910" cy="267" r="37" fill="#e94b5f"/>
+  <g fill="#eaf1f7">
+    <rect x="140" y="380" width="280" height="170" rx="28"/>
+    <rect x="460" y="380" width="280" height="170" rx="28"/>
+    <rect x="780" y="380" width="280" height="170" rx="28"/>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+---
+import type { Contact } from "../content/profile";
+
+type Props = {
+  contacts: Contact[];
+};
+
+const { contacts } = Astro.props;
+---
+
+<section class="contact-section section-shell" id="contact">
+  <div>
+    <p class="eyebrow">Contact</p>
+    <h2>如果方向匹配，欢迎联系我</h2>
+    <p>适合心理学产品、AI 产品、AI 训练、心理内容与用户研究相关机会。</p>
+  </div>
+  <div class="contact-list">
+    {
+      contacts.map((contact) => (
+        contact.href ? (
+          <a href={contact.href}>
+            <span>{contact.label}</span>
+            <strong>{contact.value}</strong>
+          </a>
+        ) : (
+          <div>
+            <span>{contact.label}</span>
+            <strong>{contact.value}</strong>
+          </div>
+        )
+      ))
+    }
+  </div>
+</section>

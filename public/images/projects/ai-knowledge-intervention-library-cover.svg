@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f6f7f9"/>
+  <rect x="80" y="72" width="1040" height="616" rx="44" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <text x="140" y="150" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">AI Knowledge Intervention Library</text>
+  <g fill="#eaf1f7">
+    <rect x="140" y="230" width="280" height="130" rx="28"/>
+    <rect x="460" y="230" width="280" height="130" rx="28"/>
+    <rect x="780" y="230" width="280" height="130" rx="28"/>
+    <rect x="140" y="410" width="440" height="130" rx="28"/>
+    <rect x="620" y="410" width="440" height="130" rx="28"/>
+  </g>
+  <circle cx="1030" cy="150" r="24" fill="#e94b5f"/>
+</svg>

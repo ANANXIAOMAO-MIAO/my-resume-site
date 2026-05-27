@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f9f8f5"/>
+  <rect x="78" y="78" width="1044" height="604" rx="44" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <text x="145" y="155" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Belief Court</text>
+  <path d="M600 225 L820 350 H380 Z" fill="#eaf1f7"/>
+  <rect x="430" y="350" width="340" height="52" rx="18" fill="#e94b5f"/>
+  <rect x="320" y="460" width="560" height="72" rx="24" fill="#f6f7f9"/>
+  <rect x="260" y="555" width="680" height="46" rx="23" fill="#eaf1f7"/>
+</svg>

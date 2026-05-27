@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#eef4f8"/>
+  <rect x="110" y="90" width="980" height="580" rx="38" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <text x="170" y="160" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Selected Papers + Excel Export</text>
+  <g fill="#f6f7f9">
+    <rect x="170" y="230" width="860" height="72" rx="20"/>
+    <rect x="170" y="325" width="860" height="72" rx="20"/>
+    <rect x="170" y="420" width="860" height="72" rx="20"/>
+  </g>
+  <rect x="170" y="545" width="210" height="62" rx="31" fill="#e94b5f"/>
+  <rect x="410" y="545" width="300" height="62" rx="31" fill="#eaf1f7"/>
+</svg>

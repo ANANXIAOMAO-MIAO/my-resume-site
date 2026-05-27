@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#eef4f8"/>
+  <text x="90" y="110" fill="#1f2933" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Belief Reframing Flow</text>
+  <g fill="#fff" stroke="#dfe7ee" stroke-width="3">
+    <rect x="90" y="220" width="230" height="150" rx="28"/>
+    <rect x="365" y="220" width="230" height="150" rx="28"/>
+    <rect x="640" y="220" width="230" height="150" rx="28"/>
+    <rect x="915" y="220" width="195" height="150" rx="28"/>
+  </g>
+  <rect x="170" y="480" width="860" height="110" rx="34" fill="#fff" stroke="#dfe7ee" stroke-width="3"/>
+  <circle cx="600" cy="535" r="28" fill="#e94b5f"/>
+</svg>

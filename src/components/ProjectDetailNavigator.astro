@@ -1,0 +1,140 @@
+---
+import type { Project } from "../content/projects";
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+
+const sections = [
+  { id: "background", label: "Background", title: "背景 / 目标" },
+  { id: "challenge", label: "Challenge", title: "挑战" },
+  { id: "solution", label: "Solution", title: "方案" },
+  { id: "result", label: "Result", title: "结果" },
+  { id: "followup", label: "Issues & Next Steps", title: "Issues & Next Steps" },
+] as const;
+---
+
+<div class="project-detail-layout" data-project-detail>
+  <nav class="project-section-nav" role="tablist" aria-label="Project sections">
+    {
+      sections.map((section, index) => (
+        <button
+          type="button"
+          class:list={["project-section-button", { active: index === 0 }]}
+          data-section-id={section.id}
+          role="tab"
+          aria-selected={index === 0 ? "true" : "false"}
+          aria-controls={`project-section-${section.id}`}
+          tabindex={index === 0 ? "0" : "-1"}
+        >
+          <span class="project-section-dot" aria-hidden="true" />
+          <span class="project-section-label">{section.label}</span>
+        </button>
+      ))
+    }
+  </nav>
+
+  <div class="project-section-card" data-project-section-card>
+    <article
+      id="project-section-background"
+      class="project-section-panel is-active"
+      data-section-panel="background"
+      role="tabpanel"
+    >
+      <p class="card-label">Background</p>
+      <h2>背景 / 目标</h2>
+      <p class="project-section-body">{project.background}</p>
+    </article>
+
+    <article
+      id="project-section-challenge"
+      class="project-section-panel"
+      data-section-panel="challenge"
+      role="tabpanel"
+      hidden
+    >
+      <p class="card-label">Challenge</p>
+      <h2>挑战</h2>
+      <p class="project-section-body">{project.challenge}</p>
+    </article>
+
+    <article
+      id="project-section-solution"
+      class="project-section-panel"
+      data-section-panel="solution"
+      role="tabpanel"
+      hidden
+    >
+      <p class="card-label">Solution</p>
+      <h2>方案</h2>
+      <p class="project-section-body">{project.solution}</p>
+    </article>
+
+    <article
+      id="project-section-result"
+      class="project-section-panel"
+      data-section-panel="result"
+      role="tabpanel"
+      hidden
+    >
+      <p class="card-label">Result</p>
+      <h2>结果</h2>
+      <p class="project-section-body">{project.result}</p>
+    </article>
+
+    <article
+      id="project-section-followup"
+      class="project-section-panel"
+      data-section-panel="followup"
+      role="tabpanel"
+      hidden
+    >
+      <p class="card-label">Issues & Next Steps</p>
+      <h2>问题与后续</h2>
+      <div class="project-followup-block">
+        <h3>Current Issues</h3>
+        <p class="project-section-body">{project.followUp.currentIssues}</p>
+      </div>
+      <div class="project-followup-block">
+        <h3>Next Steps</h3>
+        <p class="project-section-body">{project.followUp.nextSteps}</p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<script>
+  const detailLayouts = document.querySelectorAll<HTMLElement>("[data-project-detail]");
+
+  detailLayouts.forEach((layout) => {
+    const buttons = Array.from(layout.querySelectorAll<HTMLButtonElement>("[data-section-id]"));
+    const panels = Array.from(layout.querySelectorAll<HTMLElement>("[data-section-panel]"));
+
+    if (buttons.length === 0 || panels.length === 0) return;
+
+    const setActiveSection = (sectionId: string) => {
+      buttons.forEach((button) => {
+        const isActive = button.dataset.sectionId === sectionId;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+        button.tabIndex = isActive ? 0 : -1;
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.sectionPanel === sectionId;
+        panel.classList.toggle("is-active", isActive);
+        panel.hidden = !isActive;
+        panel.setAttribute("aria-hidden", String(!isActive));
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const sectionId = button.dataset.sectionId;
+        if (sectionId) setActiveSection(sectionId);
+      });
+    });
+  });
+</script>
