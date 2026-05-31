@@ -32,7 +32,7 @@ const { project } = Astro.props;
           <h1>{project.title}</h1>
           <p class="hero-intro">{project.summary}</p>
           {
-            project.links.length > 0 && (
+            project.links.length > 0 && !project.embed && (
               <a class="text-link" href={project.links[0].href} target="_blank" rel="noreferrer">
                 {project.links[0].label} →
               </a>
@@ -52,7 +52,7 @@ const { project } = Astro.props;
             <strong class="experience-detail-role">{project.role}</strong>
           </div>
           {
-            project.links.length > 0 && (
+            project.links.length > 0 && !project.embed && (
               <div>
                 <span>Links</span>
                 {project.links.map((link) => (
@@ -72,11 +72,28 @@ const { project } = Astro.props;
 
       <ProjectDetailNavigator project={project} />
 
-      <section class="detail-gallery">
-        <p class="eyebrow">Screens</p>
-        <h2>项目截图与材料</h2>
-        <ProjectGallery images={project.gallery} title={project.title} />
-      </section>
+      {
+        project.embed ? (
+          <section class="detail-embed">
+            <p class="eyebrow">Live Demo</p>
+            <h2>{project.embed.title}</h2>
+            <div class="dify-embed-frame">
+              <iframe
+                src={project.embed.iframeSrc}
+                title={project.embed.title}
+                loading="lazy"
+                allow="microphone"
+              />
+            </div>
+          </section>
+        ) : (
+          <section class="detail-gallery">
+            <p class="eyebrow">Screens</p>
+            <h2>项目截图与材料</h2>
+            <ProjectGallery images={project.gallery} title={project.title} />
+          </section>
+        )
+      }
     </article>
   </main>
 </BaseLayout>
